@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Smareeka ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd3e0);
+color:white;
+}
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+overflow:hidden;
+z-index:-1;
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+animation:float 10s linear infinite;
+font-size:25px;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+.container{
+width:90%;
+max-width:900px;
+background:rgba(0,0,0,0.35);
+padding:40px;
+border-radius:30px;
+backdrop-filter:blur(12px);
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.35);
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:scale(0.9);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.hidden{
+display:none;
+}
+
+h1{
+font-size:3rem;
+margin-bottom:25px;
+}
+
+h2{
+margin-top:20px;
+font-size:2rem;
+}
+
+p{
+font-size:1.2rem;
+line-height:2;
+margin-bottom:15px;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+margin:10px;
+font-size:1.1rem;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.yes{
+background:#ff3b78;
+color:white;
+}
+
+.no{
+background:white;
+color:#ff3b78;
+}
+
+.card-btn{
+display:block;
+width:100%;
+background:white;
+color:#ff3b78;
+margin:15px auto;
+}
+
+.next-btn{
+background:white;
+color:#ff3b78;
+}
+
+input{
+padding:15px;
+width:250px;
+border:none;
+border-radius:30px;
+outline:none;
+text-align:center;
+font-size:1rem;
+margin-top:20px;
+}
+
+.poem{
+font-family:'Dancing Script',cursive;
+font-size:1.4rem;
+line-height:2.2;
+white-space:pre-line;
+}
+
+.message{
+margin-top:20px;
+font-size:1.3rem;
+line-height:2;
+}
+
+.ring{
+font-size:8rem;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- PAGE 1 -->
+
+<div class="container" id="page1">
+
+<h1>ARE YOU SMAREEKA? ❤️</h1>
+
+<button class="yes" onclick="showPassword()">YES ❤️</button>
+
+<button class="no" onclick="showNo()">NO 💔</button>
+
+<div id="deny" class="hidden">
+
+<h2>Access Denied 😔</h2>
+
+</div>
+
+<div id="passwordBox" class="hidden">
+
+<input type="password" id="password" placeholder="Enter Password">
+
+<br>
+
+<button class="yes" onclick="checkPassword()">Unlock My Heart ❤️</button>
+
+</div>
+
+</div>
+
+<!-- LETTER PAGE -->
+
+<div class="container hidden" id="letterPage">
+
+<h1>Hey Smareeka ❤️</h1>
+
+<p>
+Having you in my life genuinely makes me happy.
+Every little moment with you becomes my favorite memory.
+</p>
+
+<p>
+You became my comfort place,
+my peace,
+and honestly...
+my favorite person.
+</p>
+
+<p>
+I truly love you ❤️
+</p>
+
+<p>
+Yours forever,<br>
+Poltik Dada ❤️
+</p>
+
+<button class="next-btn" onclick="showGame1()">Continue ➜</button>
+
+</div>
+
+<!-- GAME 1 -->
+
+<div class="container hidden" id="game1">
+
+<h1>What Do You Think I Love Most About You? ❤️</h1>
+
+<button class="card-btn" onclick="pickup('Your eyes are so pretty they should be illegal 😩❤️')">Your Eyes 👀</button>
+
+<button class="card-btn" onclick="correct()">Your Smile 😊</button>
+
+<button class="card-btn" onclick="pickup('Your voice could honestly calm every storm inside me ❤️')">Your Voice 🎵</button>
+
+<button class="card-btn" onclick="pickup('Everything about you feels unreal ❤️')">Everything 🥺</button>
+
+<div id="pickupLine" class="message"></div>
+
+<div id="continueBtn" class="hidden">
+
+<button class="next-btn" onclick="showQuestion()">Continue ➜</button>
+
+</div>
+
+</div>
+
+<!-- QUESTION -->
+
+<div class="container hidden" id="questionPage">
+
+<h1>Do You Wanna Read The Poem My Love? ❤️</h1>
+
+<button class="yes" onclick="showLove()">YES ❤️</button>
+
+<button class="no" onclick="showBad()">NO 💔</button>
+
+<div id="loveMsg" class="hidden">
+
+<h2>I LOVE YOU ❤️</h2>
+
+<button class="next-btn" onclick="showPoem()">Read Poem ➜</button>
+
+</div>
+
+<div id="badMsg" class="hidden">
+
+<h2>My Bad 😔</h2>
+
+</div>
+
+</div>
+
+<!-- POEM -->
+
+<div class="container hidden" id="poemPage">
+
+<h1>Falling Deeper ❤️</h1>
+
+<div class="poem">
+
+There is something soft about your presence,
+like rain falling quietly at midnight.
+
+You entered my life gently,
+but somehow changed everything.
+
+Now every little thing reminds me of you.
+
+And every single day,
+I fall a little deeper.
+
+If love had a face,
+it would probably smile like you.
+
+</div>
+
+<button class="next-btn" onclick="showGame2()">Continue ➜</button>
+
+</div>
+
+<!-- GAME 2 -->
+
+<div class="container hidden" id="game2">
+
+<h1>Choose A Date ❤️</h1>
+
+<button class="card-btn" onclick="dateChoice('Rooftop dates with you sound perfect 🌙❤️')">Rooftop 🌙</button>
+
+<button class="card-btn" onclick="dateChoice('Walking in rain while holding your hand 😩❤️')">Rain Walk ☔</button>
+
+<button class="card-btn" onclick="dateChoice('Beach sunsets + you = heaven ❤️')">Beach 🌅</button>
+
+<div id="dateMsg" class="message"></div>
+
+<div id="dateNext" class="hidden">
+
+<button class="next-btn" onclick="showGame3()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 3 -->
+
+<div class="container hidden" id="game3">
+
+<h1>Tap The Hearts ❤️</h1>
+
+<h2 id="heartScore">0 / 5 ❤️</h2>
+
+<button class="yes" onclick="tapHeart()">❤️ TAP ❤️</button>
+
+<div id="heartFinish" class="hidden">
+
+<h2>You stole my heart ❤️</h2>
+
+<button class="next-btn" onclick="showGame4()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 4 -->
+
+<div class="container hidden" id="game4">
+
+<h1>How Much Do You Love Me? ❤️</h1>
+
+<button class="card-btn" onclick="loveAnswer('A little? 😭')">A Little</button>
+
+<button class="card-btn" onclick="loveAnswer('That made my heart melt ❤️')">A Lot ❤️</button>
+
+<button class="card-btn" onclick="loveAnswer('Infinity sounds perfect 😩❤️')">Infinity ♾️</button>
+
+<div id="loveAnswer" class="message"></div>
+
+<div id="loveNext" class="hidden">
+
+<button class="next-btn" onclick="showGame5()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 5 -->
+
+<div class="container hidden" id="game5">
+
+<h1>Choose A Couple Goal ❤️</h1>
+
+<button class="card-btn" onclick="goal('Matching hoodies with you 😩❤️')">Matching Hoodies 🧥</button>
+
+<button class="card-btn" onclick="goal('Cooking together sounds adorable ❤️')">Cooking 🍜</button>
+
+<button class="card-btn" onclick="goal('Traveling the world with you 😭❤️')">Travel ✈️</button>
+
+<div id="goalMsg" class="message"></div>
+
+<div id="goalNext" class="hidden">
+
+<button class="next-btn" onclick="showGame6()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 6 -->
+
+<div class="container hidden" id="game6">
+
+<h1>Guess My Favorite Thing ❤️</h1>
+
+<button class="card-btn" onclick="wrongThing()">Pizza 🍕</button>
+
+<button class="card-btn" onclick="wrongThing()">Gaming 🎮</button>
+
+<button class="card-btn" onclick="correctThing()">You ❤️</button>
+
+<div id="thingMsg" class="message"></div>
+
+<div id="thingNext" class="hidden">
+
+<button class="next-btn" onclick="showGame7()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 7 -->
+
+<div class="container hidden" id="game7">
+
+<h1>Choose A Kiss ❤️</h1>
+
+<button class="card-btn" onclick="kiss('Forehead kisses feel safest 😩❤️')">Forehead 😚</button>
+
+<button class="card-btn" onclick="kiss('Cheek kisses are adorable ❤️')">Cheek 😊</button>
+
+<button class="card-btn" onclick="kiss('Every kiss with you would feel magical ❤️')">All Of Them 🥺</button>
+
+<div id="kissMsg" class="message"></div>
+
+<div id="kissNext" class="hidden">
+
+<button class="next-btn" onclick="showGame8()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 8 -->
+
+<div class="container hidden" id="game8">
+
+<h1>What Are We? ❤️</h1>
+
+<button class="card-btn" onclick="relation('Soulmates forever 😩❤️')">Soulmates ❤️</button>
+
+<button class="card-btn" onclick="relation('The cutest couple ever 😭❤️')">Best Couple 🥺</button>
+
+<button class="card-btn" onclick="relation('My forever person ❤️')">Forever ♾️</button>
+
+<div id="relationMsg" class="message"></div>
+
+<div id="relationNext" class="hidden">
+
+<button class="next-btn" onclick="showGame9()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 9 -->
+
+<div class="container hidden" id="game9">
+
+<h1>Choose My Favorite Thing ❤️</h1>
+
+<button class="card-btn" onclick="fav('Your smile wins every time 😩❤️')">Your Smile 😊</button>
+
+<button class="card-btn" onclick="fav('Your laugh makes my day ❤️')">Your Laugh 😭</button>
+
+<button class="card-btn" onclick="fav('Your eyes are dangerous ❤️')">Your Eyes 👀</button>
+
+<div id="favMsg" class="message"></div>
+
+<div id="favNext" class="hidden">
+
+<button class="next-btn" onclick="showGame10()">Next ➜</button>
+
+</div>
+
+</div>
+
+<!-- GAME 10 -->
+
+<div class="container hidden" id="game10">
+
+<h1>Final Question ❤️</h1>
+
+<p>Will you stay with me forever? 🥺</p>
+
+<button class="yes" onclick="forever()">YES ❤️</button>
+
+<button class="no" onclick="forever()">ALWAYS ❤️</button>
+
+<div id="foreverMsg" class="message"></div>
+
+<div id="foreverNext" class="hidden">
+
+<button class="next-btn" onclick="showProposal()">Final Surprise ➜</button>
+
+</div>
+
+</div>
+
+<!-- PROPOSAL -->
+
+<div class="container hidden" id="proposalPage">
+
+<div class="ring">💍</div>
+
+<h1>Will You Marry Me My Love? ❤️</h1>
+
+<p>
+No matter where life takes us,
+I just want you beside me forever ❤️
+</p>
+
+</div>
+
+<script>
+
+/* Hearts */
+
+function createHeart(){
+
+const heart=document.createElement('div');
+
+heart.classList.add('heart');
+
+heart.innerHTML='❤️';
+
+heart.style.left=Math.random()*100+'vw';
+
+heart.style.fontSize=Math.random()*20+15+'px';
+
+heart.style.animationDuration=Math.random()*5+5+'s';
+
+document.getElementById('hearts').appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},10000);
+
+}
+
+setInterval(createHeart,300);
+
+/* Password */
+
+function showPassword(){
+document.getElementById('passwordBox').classList.remove('hidden');
+}
+
+function showNo(){
+document.getElementById('deny').classList.remove('hidden');
+}
+
+function checkPassword(){
+
+const pass=document.getElementById('password').value;
+
+if(pass==='0423'){
+
+document.getElementById('page1').classList.add('hidden');
+
+document.getElementById('letterPage').classList.remove('hidden');
+
+}else{
+alert('Wrong Password 😔');
+}
+
+}
+
+/* GAME 1 */
+
+function showGame1(){
+
+document.getElementById('letterPage').classList.add('hidden');
+
+document.getElementById('game1').classList.remove('hidden');
+
+}
+
+function pickup(text){
+
+document.getElementById('pickupLine').innerHTML=text;
+
+}
+
+function correct(){
+
+document.getElementById('pickupLine').innerHTML='Your smile is literally my favorite thing in the world ❤️';
+
+document.getElementById('continueBtn').classList.remove('hidden');
+
+}
+
+/* QUESTION */
+
+function showQuestion(){
+
+document.getElementById('game1').classList.add('hidden');
+
+document.getElementById('questionPage').classList.remove('hidden');
+
+}
+
+function showLove(){
+document.getElementById('loveMsg').classList.remove('hidden');
+}
+
+function showBad(){
+document.getElementById('badMsg').classList.remove('hidden');
+}
+
+/* POEM */
+
+function showPoem(){
+
+document.getElementById('questionPage').classList.add('hidden');
+
+document.getElementById('poemPage').classList.remove('hidden');
+
+}
+
+/* GAME 2 */
+
+function showGame2(){
+
+document.getElementById('poemPage').classList.add('hidden');
+
+document.getElementById('game2').classList.remove('hidden');
+
+}
+
+function dateChoice(text){
+
+document.getElementById('dateMsg').innerHTML=text;
+
+document.getElementById('dateNext').classList.remove('hidden');
+
+}
+
+/* GAME 3 */
+
+let taps=0;
+
+function showGame3(){
+
+document.getElementById('game2').classList.add('hidden');
+
+document.getElementById('game3').classList.remove('hidden');
+
+}
+
+function tapHeart(){
+
+taps++;
+
+document.getElementById('heartScore').innerHTML=taps+' / 5 ❤️';
+
+if(taps>=5){
+
+document.getElementById('heartFinish').classList.remove('hidden');
+
+}
+
+}
+
+/* GAME 4 */
+
+function showGame4(){
+
+document.getElementById('game3').classList.add('hidden');
+
+document.getElementById('game4').classList.remove('hidden');
+
+}
+
+function loveAnswer(text){
+
+document.getElementById('loveAnswer').innerHTML=text;
+
+document.getElementById('loveNext').classList.remove('hidden');
+
+}
+
+/* GAME 5 */
+
+function showGame5(){
+
+document.getElementById('game4').classList.add('hidden');
+
+document.getElementById('game5').classList.remove('hidden');
+
+}
+
+function goal(text){
+
+document.getElementById('goalMsg').innerHTML=text;
+
+document.getElementById('goalNext').classList.remove('hidden');
+
+}
+
+/* GAME 6 */
+
+function showGame6(){
+
+document.getElementById('game5').classList.add('hidden');
+
+document.getElementById('game6').classList.remove('hidden');
+
+}
+
+function wrongThing(){
+
+document.getElementById('thingMsg').innerHTML='Close 😭❤️';
+
+}
+
+function correctThing(){
+
+document.getElementById('thingMsg').innerHTML='Correct 😩❤️';
+
+document.getElementById('thingNext').classList.remove('hidden');
+
+}
+
+/* GAME 7 */
+
+function showGame7(){
+
+document.getElementById('game6').classList.add('hidden');
+
+document.getElementById('game7').classList.remove('hidden');
+
+}
+
+function kiss(text){
+
+document.getElementById('kissMsg').innerHTML=text;
+
+document.getElementById('kissNext').classList.remove('hidden');
+
+}
+
+/* GAME 8 */
+
+function showGame8(){
+
+document.getElementById('game7').classList.add('hidden');
+
+document.getElementById('game8').classList.remove('hidden');
+
+}
+
+function relation(text){
+
+document.getElementById('relationMsg').innerHTML=text;
+
+document.getElementById('relationNext').classList.remove('hidden');
+
+}
+
+/* GAME 9 */
+
+function showGame9(){
+
+document.getElementById('game8').classList.add('hidden');
+
+document.getElementById('game9').classList.remove('hidden');
+
+}
+
+function fav(text){
+
+document.getElementById('favMsg').innerHTML=text;
+
+document.getElementById('favNext').classList.remove('hidden');
+
+}
+
+/* GAME 10 */
+
+function showGame10(){
+
+document.getElementById('game9').classList.add('hidden');
+
+document.getElementById('game10').classList.remove('hidden');
+
+}
+
+function forever(){
+
+document.getElementById('foreverMsg').innerHTML='You just made me the happiest person alive 😭❤️';
+
+document.getElementById('foreverNext').classList.remove('hidden');
+
+}
+
+/* Proposal */
+
+function showProposal(){
+
+document.getElementById('game10').classList.add('hidden');
+
+document.getElementById('proposalPage').classList.remove('hidden');
+
+}
+
+</script>
+
+</body>
+</html>
